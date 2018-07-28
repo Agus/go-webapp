@@ -10,7 +10,7 @@ type Page struct {
 	Body  []byte
 }
 
-func (p *Page) save() error {
+func (p *Page) savePage() error {
 	filename := p.Title + ".txt"
 	return ioutil.WriteFile(filename, p.Body, 0600)
 }
@@ -26,7 +26,7 @@ func loadPage(title string) (*Page, error) {
 
 func main() {
 	p1 := &Page{Title: "TestPage", Body: []byte("Sample page!")}
-	p1.save()
+	p1.savePage()
 	p2, _ := loadPage("TestPage")
 	fmt.Println(string(p2.Body))
 }
